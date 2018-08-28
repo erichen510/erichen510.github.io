@@ -91,7 +91,9 @@
 <meta property="og:image" content="http://yoursite.com/images/network.png">
 <meta property="og:image" content="http://yoursite.com/images/rnn.png">
 <meta property="og:image" content="http://yoursite.com/images/model.png">
-<meta property="og:updated_time" content="2018-05-24T10:50:26.411Z">
+<meta property="og:image" content="http://yoursite.com/images/stepfunction.png">
+<meta property="og:image" content="http://yoursite.com/images/sigmoidfunction.png">
+<meta property="og:updated_time" content="2018-05-26T16:43:20.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络入门">
 <meta name="twitter:description" content="神经网络入门人的思考基于神经网络，外部的刺激基本上由神经元来完成。基于人类的神经元，最早提出的模型为“感知器”（perceptron），圆圈代表感知器，可以接受多个信号，产生一个输出。  权重和阈值假设你要去旅行，需要满足三个条件， 这些因素并不具备同等的重要性，所以分配给其不同的权重：  时间： 权重8 经费： 权重4 同伴： 权重4  这时，还要确立一个 阈值（threshold）。如果总和大">
@@ -363,8 +365,23 @@
 <p><img src="/images/model.png" height="300" width="400"></p>
 <h2 id="神经网络的运作过程"><a href="#神经网络的运作过程" class="headerlink" title="神经网络的运作过程"></a>神经网络的运作过程</h2><p>搭建神经网络需要满足三个条件：</p>
 <blockquote>
-<p>  输入输出<br>    权重和阈值<br>    多层感知器的结构</p>
+<pre><code>- 输入输出  
+- 权重和阈值
+- 多层感知器的结构
+</code></pre></blockquote>
+<p>其中，最困难的部分就是确定权重（w）和阈值（b）。目前为止，这两个值都是主观给出的，但现实中很难估计它们的值，必需有一种方法，可以找出答案。<br>这种方法就是试错法。其他参数都不变，w（或b）的微小变动，记作Δw（或Δb），然后观察输出有什么变化。不断重复这个过程，直至得到对应最精确输出的那组w和b，就是我们要的值。这个过程称为模型的训练。</p>
+<h2 id="输出的连续性"><a href="#输出的连续性" class="headerlink" title="输出的连续性"></a>输出的连续性</h2><p>上面的模型有一个问题没有解决，按照假设，输出只有两种结果：0和1。但是，模型要求w或b的微小变化，会引发输出的变化。如果只输出0和1，未免也太不敏感了，无法保证训练的正确性，因此必须将”输出”改造成一个连续性函数。</p>
+<p>感知器的计算结果为</p>
+<blockquote>
+<p>z = wx + b</p>
 </blockquote>
+<p>然后计算下面的式子</p>
+<blockquote>
+<p>σ(z) = 1 / (1 + e^(-z))</p>
+</blockquote>
+<p>这是因为如果z趋向正无穷z → +∞（表示感知器强烈匹配），那么σ(z) → 1；如果z趋向负无穷z → -∞（表示感知器强烈不匹配），那么σ(z) → 0。也就是说，只要使用σ(z)当作输出结果，那么输出就会变成一个连续性函数。</p>
+<p>原来的输出曲线：<br><img src="/images/stepfunction.png" height="300" width="400"><br>现在的输出曲线：<br><img src="/images/sigmoidfunction.png" height="300" width="400"></p>
+<p>后面有个计算偏导数的公式需要补充。<br>与这个问题相关的问题 还有：如何识别图像的边缘 图像对比算法 图像与滤波<br>这个几个类似的话题总结 来自阮一峰博客的摘要</p>
 
       
     </div>
@@ -398,6 +415,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/27/linux/" rel="prev" title="linux">
+                linux <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -474,7 +495,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -511,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络入门"><span class="nav-number">1.</span> <span class="nav-text">神经网络入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权重和阈值"><span class="nav-number">2.</span> <span class="nav-text">权重和阈值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策模型"><span class="nav-number">3.</span> <span class="nav-text">决策模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矢量化"><span class="nav-number">4.</span> <span class="nav-text">矢量化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的运作过程"><span class="nav-number">5.</span> <span class="nav-text">神经网络的运作过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络入门"><span class="nav-number">1.</span> <span class="nav-text">神经网络入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权重和阈值"><span class="nav-number">2.</span> <span class="nav-text">权重和阈值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策模型"><span class="nav-number">3.</span> <span class="nav-text">决策模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矢量化"><span class="nav-number">4.</span> <span class="nav-text">矢量化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的运作过程"><span class="nav-number">5.</span> <span class="nav-text">神经网络的运作过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出的连续性"><span class="nav-number">6.</span> <span class="nav-text">输出的连续性</span></a></li></ol></div>
             
 
           </div>
